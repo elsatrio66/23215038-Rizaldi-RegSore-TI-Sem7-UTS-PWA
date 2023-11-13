@@ -1,0 +1,21 @@
+{
+    "name": "Profil Mahasiswa STMIK Tegal",
+    "short_name": "Profil Mahasiswa",
+    "description": "Profil mahasiswa STMIK Tegal - Muhamad Rizaldi Satrio Fadli",
+    "start_url": "/rizaldi.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4285f4",
+    "icons": [
+      {
+        "src": "your_photo.jpg",
+        "sizes": "192x192",
+        "type": "image/jpg"
+      }
+    ],
+    "serviceworker": {
+      "src": "serviceWorker.js",
+      "scope": "/"
+    }
+  }
+  

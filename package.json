@@ -1,0 +1,23 @@
+{
+  "name": "profil-rizaldi",
+  "version": "1.0.0",
+  "description": "Profil Mahasiswa STMIK Tegal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "manifest": {
+    "src": "manifest.json",
+    "dest": "public/manifest.json"
+  },
+  "serviceWorker": {
+    "src": "serviceWorker.js",
+    "dest": "public/serviceWorker.js"
+  }
+}

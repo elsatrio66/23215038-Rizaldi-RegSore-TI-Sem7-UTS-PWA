@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFIL MAHASISWA STMIK TEGAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <img src="your_photo.jpg" alt="Muhamad Rizaldi Satrio Fadli">
+        </div>
+        <div class="right-column">
+            <h1>PROFIL MAHASISWA STMIK TEGAL</h1>
+            <ul>
+                <li><strong>Nama:</strong> Muhamad Rizaldi Satrio Fadli</li>
+                <li><strong>NIM:</strong> 23215038</li>
+                <li><strong>Program:</strong> S1</li>
+                <li><strong>Jurusan:</strong> Teknik Informatika</li>
+                <li><strong>Semester:</strong> 7</li>
+                <li><strong>Kelas:</strong> Reguler Malam</li>
+                <li><strong>Matkul:</strong> Komputasi Awan dan Perangkat Bergerak</li>
+                <li><strong>Dosen Matkul:</strong> Rifki Dwi Kurniawan, S.Kom</li>
+                <li><strong>Tujuan Belajar PWA:</strong> Agar bisa membuat web pribadi yang baik</li>
+                <li><strong>Alamat:</strong> Gumayun, Dukuhwaru, Kab. Tegal</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Menambahkan tombol langganan push -->
+    <button onclick="subscribeToPush()">Langganan Push</button>
+
+    <!-- Menambahkan skrip untuk mengirim pesan ke service worker -->
+    <script>
+        function subscribeToPush() {
+            // Mengirim pesan ke service worker untuk memulai langganan push
+            navigator.serviceWorker.controller.postMessage({
+                action: 'subscribeToPush',
+            });
+        }
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/serviceWorker.js')
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Error registering Service Worker:', error);
+            });
+        } else {
+          console.warn('Service Worker is not supported.');
+        }
+      </script>
+       <script>
+        navigator.serviceWorker.onmessage = (event) => {
+            if (event.data.action === 'showDownloadNotification') {
+                const url = event.data.url;
+
+                // Menampilkan notifikasi
+                new Notification('Download Aset', {
+                    body: `Klik untuk mendownload: ${url}`,
+                    icon: 'icon.png', // Ganti dengan URL ikon yang sesuai
+                });
+            }
+        };
+    </script>
+</body>
+</html>
